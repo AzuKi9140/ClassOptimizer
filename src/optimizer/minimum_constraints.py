@@ -46,7 +46,7 @@ def minimum_constraints(
     total_score = sum(data.score.values())
     for c in C:
         p += xsum(data.score[s] * x[s, c] for s in data.S) >= total_score // len(C)
-        # p += xsum(score[s] * x[s, c] for s in S) <= (total_score // len(C)) + 1
+        # p += xsum(data.score[s] * x[s, c] for s in data.S) <= (total_score // len(C)) + 1
         p += xsum(data.score[s] * x[s, c] for s in data.S) <= (
             total_score // len(C)
         ) + max(data.score.values())
