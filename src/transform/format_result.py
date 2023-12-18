@@ -8,6 +8,17 @@ from src import schemas
 def format_results(
     x: dict, df: DataFrame, C: List[str], S: List[int]
 ) -> Dict[str, List[schemas.StudentInfo]]:
+    """最適化結果を整形する
+
+    Args:
+        x (dict): 最適化結果
+        df (DataFrame): 生徒情報を格納したデータフレーム
+        C (List[str]): クラス名を格納したリスト
+        S (List[int]): 学生IDを格納したリスト
+
+    Returns:
+        Dict[str, List[schemas.StudentInfo]]: 整形後の最適化結果
+    """
     class_to_students = {}
     for c in C:
         class_to_students[c] = [s for s in S if x[s, c].x >= 0.5]
