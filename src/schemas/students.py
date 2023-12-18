@@ -14,15 +14,17 @@ class Student(pa.SchemaModel):
         strict = True
 
 
-def validate_students(df: DataFrame) -> DataFrame:
+def validate_students(df: DataFrame, num_classes: int) -> DataFrame:
     """Studentデータのバリデーション
 
     Args:
         df (DataFrame): Studentデータ
+        num_classes (int): クラス数
 
     Returns:
         DataFrame: バリデーション後のStudentデータ
     """
+    assert len(df) >= num_classes * 2, "学生数はクラス数の2倍以上である必要があります"
     return Student.validate(df)
 
 

@@ -14,13 +14,13 @@ def main():
     parser.add_argument("--add_score", action="store_true")
     args = parser.parse_args()
 
+    C = ["A", "B", "C", "D", "E", "F", "G", "H"]  # クラス名を格納したリスト
+
     s_df = pd.read_csv("data/students.csv")
-    s_df = schemas.validate_students(s_df)
+    s_df = schemas.validate_students(s_df, len(C))
 
     pair_df = pd.read_csv("data/student_pairs.csv")
     pair_df = schemas.validate_student_pairs(pair_df)
-
-    C = ["A", "B", "C", "D", "E", "F", "G", "H"]  # クラス名を格納したリスト
 
     data = prepare_data(s_df, pair_df)
 
@@ -34,10 +34,6 @@ def main():
 
     # 各クラスの生徒情報を整形
     formatted_results = format_results(x, s_df, C, data.S)
-    for c, students in formatted_results.items():
-        print(c)
-        for student in students:
-            print(student)
 
     # 各クラスのスコアを格納するための辞書
     class_scores = {
