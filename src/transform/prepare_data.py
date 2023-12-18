@@ -4,6 +4,15 @@ from src import schemas
 
 
 def prepare_data(s_df: pd.DataFrame, pair_df: pd.DataFrame) -> schemas.OptimizationData:
+    """データの前処理を行う
+
+    Args:
+        s_df (pd.DataFrame): 生徒情報を格納したデータフレーム
+        pair_df (pd.DataFrame): ペア情報を格納したデータフレーム
+
+    Returns:
+        schemas.OptimizationData: 最適化問題で使用するデータ
+    """
     # 学生IDを格納したリスト
     S = s_df["student_id"].tolist()
 
