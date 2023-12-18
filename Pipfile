@@ -17,3 +17,4 @@ python_version = "3.12"
 
 [scripts]
 opt = "python -m src.main"
+opt_add_score = "python -m src.main --add_score"
